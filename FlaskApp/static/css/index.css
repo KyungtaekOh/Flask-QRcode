@@ -1,0 +1,92 @@
+.btn {
+    display: block;
+    background: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 40px;
+    letter-spacing: 0.3em;
+    color: white;
+    border-radius: 0;
+    transition: all 0.7s ease-out;
+    background: linear-gradient(270deg, rgba(223, 190, 106, 0.8), rgba(146, 111, 52, 0.8), rgba(34, 34, 34, 0), rgba(34, 34, 34, 0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    padding-top: 7%;
+    padding-bottom: 7%;
+    border: 5px solid white;
+    border-radius: 8px;
+    width: 40%;
+    height: 15%;
+    position: relative;
+    top: 15%;
+    left: 30%;
+    right: 30%;
+}
+
+.btn:hover {
+    color: #fff;
+    border: 1px solid rgba(223, 190, 106, 0);
+    color: $ white;
+    background-position: 99% 50%;
+}
+.btn2 {
+    display: block;
+    background: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 40;
+    font-style: normal;
+    font-size: 200%;
+    letter-spacing: 0.3em;
+    /*color: rgb(223, 190, 106);*/
+    color: white;
+    border-radius: 0;
+    /*padding: 18px 80px 20px;*/
+    transition: all 0.7s ease-out;
+    background: linear-gradient(270deg, rgba(223, 190, 106, 0.8), rgba(146, 111, 52, 0.8), rgba(34, 34, 34, 0), rgba(34, 34, 34, 0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 1%;
+    width: 15%;
+    height: 10%;
+    position: relative;
+    left: 82%;
+}
+
+.btn2:hover {
+    color: #fff;
+    border: 1px solid rgba(223, 190, 106, 0);
+    color: $ white;
+    background-position: 99% 50%;
+}
+
+
+body {
+    background: MediumSeaGreen;
+    color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arials, sans;
+}
+
+#pagename{
+    position: relative;
+    width: 40%;
+    left: 30%;
+    right: 30%;
+    font-size: 500%;
+    color: green;
+}
+
+
+@media only screen and (min-width:768px){
+
+    .btn2{
+        font-size: 150% !important;
+    }
+}
