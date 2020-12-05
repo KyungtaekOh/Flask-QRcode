@@ -9,28 +9,30 @@
 </head>
 <body>
 
-    <div id="maindiv">
-        <div id="forUser">
-            <br><br>
-            <span id="pagename">확진자 정보 입력</span>
-            <div id="inputWrapper">
-                <p>휴대전화 번호</p>
-                <input type="text" id="pnum" placeholder="ex) 01022223333">
-                <p>날짜</p>
-                <input type="text" id="date" placeholder="ex) 2020-12-4-18-17">
-            </div>
-
-<!--            <button id="userBut" onclick="makeUserUrl()">im user</button>-->
-            <div id="btnWrapper">
-                <button type="button" id="userBut" class="btn btn-info" onclick="">Check!</button>
-                    <!-- 누르면 db 저장                -->
-                <br><br><br><br>
-            </div>
+<div id="maindiv">
+    <div id="forUser">
+        <br><br>
+        <span id="pagename">확진자 정보 입력</span>
+        <div id="inputWrapper">
+            <p>휴대전화 번호</p>
+            <input type="text" id="pnum" placeholder="ex) 01022223333">
+            <p>날짜</p>
+            <input type="text" id="date" placeholder="ex) 2020-12-4 11:22:33">
         </div>
 
+        <div id="btnWrapper">
+            <button type="button" id="userBut" class="btn btn-info" onclick="getData()">Check!</button>
+            <!-- 누르면 db 저장                -->
+            <br><br><br><br>
+        </div>
     </div>
 
+</div>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="{{ url_for('static', filename='js/qrcode.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/setting.js') }}"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 </body>
 </html>

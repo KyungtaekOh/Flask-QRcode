@@ -13,7 +13,7 @@ class history(fdatabase.Model):
     storeName = fdatabase.Column(fdatabase.String(30), nullable=False)
     userPhoneNum = fdatabase.Column(fdatabase.String(30), nullable=False)
     userMailAddress = fdatabase.Column(fdatabase.String(30), nullable=False)
-    dayDateInfo = fdatabase.Column(fdatabase.String(30), nullable=False)
+    dayDateInfo = fdatabase.Column(fdatabase.DATETIME, nullable=False, default=datetime.now())
 
     # userPhoneNum = fdatabase.Column(fdatabase.String(30), unique=True, nullable=False)
     # userMailAddress = fdatabase.Column(fdatabase.String(30), unique=True, nullable=False)

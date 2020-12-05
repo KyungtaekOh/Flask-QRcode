@@ -4,7 +4,6 @@ import cv2
 import pyzbar.pyzbar as pyzbar
 import threading
 
-# set FLASK_APP=fapp (terminal command)
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -18,16 +17,25 @@ from repository import repository
 def main():
     return render_template('main.html')
 
+
 @app.route('/')
 def hello_world():
     # return '<h1>Welcome QR-Reader Page1</h1>'
     return render_template('index.html')
+
 
 class Variable(object):
     def __init__(self):
         self.prev_data = None
         self.barcode_data = None
         self.storename = None
+        self.target = None
+
+    def setTarget(self, t):
+        self.target = t
+
+    def getTarget(self):
+        return self.target
 
     def setname(self, name):
         self.storename = name
@@ -46,20 +54,79 @@ class Variable(object):
 
     def getBarcode(self, **kwargs):
         return self.barcode_data
+
+
 variable = Variable()
+
 
 @app.route('/setting')
 def setting():
     return render_template('setting.html')
 
+
 @app.route('/ajax', methods=['POST'])
 def ajax():
     try:
-        data = request.get_json(force = True)
+        data = request.get_json(force=True)
         variable.setname(data['name'])
     except Exception as e:
         print(e)
-    return jsonify(result = "success")
+    return jsonify(result="success")
+
+
+from domain.model import history
+
+
+@app.route('/ajax2', methods=['POST'])
+def query():
+    """
+    return: 확진 자의 확진일 이후 기록
+    """
+    try:
+        data = request.get_json(force=True)
+        pnum = data['pnum']
+        date = data['data']
+        print(pnum, date)
+        result = fdatabase.session. \
+            query(history.id,
+                  history.storeName,
+                  history.userPhoneNum,
+                  history.userMailAddress,
+                  history.dayDateInfo). \
+            filter(history.userPhoneNum == '3',
+                   history.dayDateInfo >= date).all()
+        print(result)
+
+        """
+        return: 동선 겹쳤던 사람들의 정보
+        """
+        result2 = object
+        for ent in result:
+            d = str(ent[4])
+            print(ent[1], d)
+            result2 = fdatabase.session. \
+                query(history.id,
+                      history.storeName,
+                      history.userPhoneNum,
+                      history.userMailAddress,
+                      history.dayDateInfo). \
+                filter(
+                        history.storeName == ent[1],
+                       history.dayDateInfo >= d
+                       ).all()
+        result2 = list(set(result2))
+        variable.setTarget(result2)
+    except Exception as e:
+        print(e)
+
+    """
+    TODO: 메일보내는 python 실행
+        1. 성공하면 아래의 return문으로 가서 alert창이랑 rendering
+        2. 실패하면 알아서 ajax fail뜨것지
+    """
+
+    return jsonify(result="success")
+
 
 @app.route('/video')
 @app.route('/video/<storename>')
@@ -79,7 +146,6 @@ if not camera.isOpened():
 
 
 def read_cam():
-
     while True:
         ret, img = camera.read()
         if not ret:
@@ -104,11 +170,9 @@ def read_cam():
             variable.setPrev(variable.getBarcode())
             storename = variable.getname()
 
-
             dbThread = threading.Thread(target=repository.insertUserData(storename=storename,
                                                                          phoneNum=qrData[0],
-                                                                         mailAddress=qrData[1],
-                                                                         daydate=qrData[2]))
+                                                                         mailAddress=qrData[1]))
             try:
                 dbThread.start()
             except Exception as e:

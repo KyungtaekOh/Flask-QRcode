@@ -9,14 +9,13 @@ from domain.model import history
 # dayDateInfo = fdatabase.Column(fdatabase.string(30), nullable=False)
 
 def insertUserData(storename=None, phoneNum=None, mailAddress=None, daydate=None):
-    if (storename is None) or (phoneNum is None) or (mailAddress is None) or (daydate is None):
+    if (storename is None) or (phoneNum is None) or (mailAddress is None):
         return print("More need Data")
 
     userData = history(
         storeName=storename,
         userPhoneNum=phoneNum,
-        userMailAddress=mailAddress,
-        dayDateInfo=daydate
+        userMailAddress=mailAddress
     )
 
     try:

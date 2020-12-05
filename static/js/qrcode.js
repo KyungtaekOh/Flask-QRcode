@@ -27,13 +27,13 @@ function makeUserUrl() {
         return false;
     }
 
-    let date = new Date();
-    let dayDateInfo = changeDateFormat(date);
+    // let date = new Date();
+    // let dayDateInfo = changeDateFormat(date);
 
     let userlink = document.getElementById('goQrPage');
 
     let userUrl = "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=" +
-        userPhoneNum + "|" + userMailAddress + "|" + dayDateInfo;
+        userPhoneNum + "|" + userMailAddress;
     userlink.href = userUrl;
     userlink.style.display = "inline";
 
