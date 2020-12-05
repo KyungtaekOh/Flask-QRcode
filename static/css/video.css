@@ -1,0 +1,70 @@
+#scanvideo{
+    margin : auto;
+    display: block;
+    width: 50%;
+    height: 80%;
+}
+body{
+     background: MediumSeaGreen;
+}
+
+#pagename{
+    position: relative;
+    width: 50%;
+    left: 25%;
+    right: 25%;
+    font-size: 500%;
+    color: white;
+}
+
+#videoWrapper{
+    display: none;
+}
+
+input {
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 3px solid white;
+    border-radius: 5px;
+    width: 50%;
+    height: 10%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    padding: 10px 10px 10px 5%;
+    font-size: 200%;
+    font-weight: normal;
+    text-align: left;
+    position: relative;
+    left: 25%;
+}
+p{
+    padding-left: 25%;
+    position: relative;
+    font-size: 200%;
+    color: dimgray;
+}
+
+#userBut{
+    position: relative;
+    width: 30%;
+    font-size: 200%;
+    margin-bottom: 1%;
+    left: 35%;
+    right: 35%;
+}
+
+#getStoreName{
+    position: relative;
+}
+
+@media (min-width:768px){
+    #scanvideo{
+        height: 80%;
+    }
+}
+@media (max-width:768px){
+    #scanvideo{
+        height: 50%;
+    }
+}
