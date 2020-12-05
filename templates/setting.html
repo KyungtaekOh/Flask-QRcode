@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Main Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/setting.css">
 
 </head>
 <body>
@@ -29,8 +29,25 @@
 
 </div>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<div id="mail">
 
+    <div id="mailWrapper">
+        <span id="mtext">Please enter an account to send mail</span>
+        <br><br>
+        <span class="mailData">Gmail ID</span>
+        <input type="email" id="aa" placeholder="email@example.com">
+        
+        <span class="mailData">Password</span>
+        <input type="password" id="bb" placeholder="password">
+
+        <button type="button" id="sendbtn" class="btn btn-info" onclick="send()">Send</button>
+        <button type="button" id="cancel" class="btn btn-info" onclick="cancel()">Cancel</button>
+    </div>
+
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="{{ url_for('static', filename='js/setting.js') }}"></script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 

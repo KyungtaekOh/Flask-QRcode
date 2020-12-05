@@ -20,7 +20,6 @@ def main():
 
 @app.route('/')
 def hello_world():
-    # return '<h1>Welcome QR-Reader Page1</h1>'
     return render_template('index.html')
 
 
@@ -57,6 +56,7 @@ class Variable(object):
 
 
 variable = Variable()
+from sendMail import mailSender
 
 
 @app.route('/setting')
@@ -84,48 +84,68 @@ def query():
     """
     try:
         data = request.get_json(force=True)
-        pnum = data['pnum']
+        pnum = str(data['pnum'])
         date = data['data']
-        print(pnum, date)
         result = fdatabase.session. \
             query(history.id,
                   history.storeName,
                   history.userPhoneNum,
                   history.userMailAddress,
                   history.dayDateInfo). \
-            filter(history.userPhoneNum == '3',
-                   history.dayDateInfo >= date).all()
+            filter(history.userPhoneNum == pnum,
+                   history.dayDateInfo >= date).\
+            all()
         print(result)
-
         """
         return: 동선 겹쳤던 사람들의 정보
         """
-        result2 = object
+        result2 = []
         for ent in result:
+            n = str(ent[1])
             d = str(ent[4])
-            print(ent[1], d)
-            result2 = fdatabase.session. \
+            temp = fdatabase.session. \
                 query(history.id,
                       history.storeName,
                       history.userPhoneNum,
                       history.userMailAddress,
                       history.dayDateInfo). \
-                filter(
-                        history.storeName == ent[1],
+                filter(history.storeName == n,
                        history.dayDateInfo >= d
-                       ).all()
-        result2 = list(set(result2))
+                       ).\
+                all()
+            for i in temp:
+                if(i[2] == pnum):
+                    continue
+                result2.append(i)
+        result2 = list(set(result2))  # 중복제거
         variable.setTarget(result2)
     except Exception as e:
         print(e)
-
     """
-    TODO: 메일보내는 python 실행
-        1. 성공하면 아래의 return문으로 가서 alert창이랑 rendering
-        2. 실패하면 알아서 ajax fail뜨것지
+    test time :     2020-12-03 00:00:00
     """
 
     return jsonify(result="success")
+
+
+@app.route('/ajax3', methods=['POST'])
+def mailSend():
+    re = "success"
+    try:
+        data = request.get_json(force=True)
+        id = data['id']
+        pw = data['pw']
+        target = variable.getTarget()
+        print('#################')
+        for i in target:
+            print(i)
+        sender = mailSender()
+        sender.send_mail(addr=id,
+                         subj_layout="코로나 확진자 동선 겹침알림",
+                         cont_layout="검사안받으면 3대가 망함")
+    except Exception as e:
+        print(e)
+    return jsonify(result=re)
 
 
 @app.route('/video')

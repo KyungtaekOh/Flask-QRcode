@@ -1,0 +1,135 @@
+body {
+    background: MediumSeaGreen;
+    height: 100%;
+}
+
+input {
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 3px solid white;
+    border-radius: 5px;
+    width: 100%;
+    height: 15%;
+    margin-top: 3%;
+    margin-bottom: 10%;
+    padding: 10px 10px 10px 10%;
+    font-size: 200%;
+    font-weight: normal;
+    text-align: left;
+}
+
+#maindiv {
+    width: 100%;
+}
+
+#inputWrapper {
+    position: relative;
+    margin-top: 20%;
+    width: 50%;
+    left: 25%;
+    right: 25%;
+}
+
+p{
+    font-size: 200%;
+    color: dimgray;
+}
+
+#userBut{
+    position: relative;
+    width: 40%;
+    font-size: 300%;
+}
+
+#btnWrapper{
+    text-align: center;
+}
+
+#goQrPage{
+    display: none;
+    padding: 1%;
+    margin-top: 5%;
+    position: relative;
+    width: 40%;
+    border: 5px solid white;
+    border-radius: 5px;
+    font-size: 300%;
+    color: white;
+}
+
+#pagename{
+    position: relative;
+    width: 50%;
+    left: 25%;
+    right: 25%;
+    font-size: 500%;
+    color: white;
+}
+
+#mail{
+    position: fixed;
+    width: 50%;
+    height: 60%;
+    left: 25%;
+    right: 25%;
+    top: 20%;
+    bottom: 20%;
+    border: 8px solid darkgreen;
+    border-radius: 5px;
+    background: forestgreen;
+    display: none;
+}
+
+#mailWrapper{
+    position: relative;
+    width: 70%;
+    left: 15%;
+    right: 15%;
+    top: 10%;
+    bottom: 10%;
+}
+#mtext{
+    font-size: 300% !important;
+    font-size: 200%;
+    color: white;
+}
+
+.mailData{
+    font-size: 150%;
+    color: white;
+}
+
+#sendbtn{
+    display: inline;
+    position: relative;
+    width: 25%;
+    left: 20%;
+    right: 50%;
+    font-size: 200%;
+}
+
+#cancel{
+    display: inline;
+    position: relative;
+    width: 25%;
+    left: 25%;
+    right: 25%;
+    font-size: 200%;
+}
+
+#aa::placeholder{
+    color: lightgray;
+}
+#bb::placeholder{
+    color: lightgray;
+}
+
+
+
+@media (min-width:768px){
+
+    #inputWrapper {
+        margin-top: 5%;
+    }
+}
