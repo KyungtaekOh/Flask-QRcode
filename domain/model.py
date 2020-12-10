@@ -15,9 +15,5 @@ class history(fdatabase.Model):
     userMailAddress = fdatabase.Column(fdatabase.String(30), nullable=False)
     dayDateInfo = fdatabase.Column(fdatabase.DATETIME, nullable=False)
 
-    # userPhoneNum = fdatabase.Column(fdatabase.String(30), unique=True, nullable=False)
-    # userMailAddress = fdatabase.Column(fdatabase.String(30), unique=True, nullable=False)
-    # dayDateInfo = fdatabase.Column(fdatabase.DateTime, nullable=False, default=datetime.now)
-
     def __repr__(self):
         return f"<User('{self.id}', '{self.storeName}', '{self.userPhoneNum}', '{self.userMailAddress}', '{self.dayDateInfo}')>\n"

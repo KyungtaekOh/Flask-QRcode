@@ -1,22 +1,11 @@
 from fapp import fdatabase
 from domain.model import history
 from datetime import datetime
-
-
-# id = fdatabase.Column(fdatabase.Integer, primary_key=True, autoincrement=True, nullable=False)
-# storeName = fdatabase.Column(fdatabase.String(30), nullable=False)
-# userPhoneNum = fdatabase.Column(fdatabase.String(30), unique=True, nullable=False)
-# userMailAddress = fdatabase.Column(fdatabase.String(30), unique=True, nullable=False)
-# dayDateInfo = fdatabase.Column(fdatabase.string(30), nullable=False)
-
 def insertUserData(storename=None, phoneNum=None, mailAddress=None, daydate=None):
     if (storename is None) or (phoneNum is None) or (mailAddress is None):
         return print("More need Data")
     date = datetime.now()
-    # date = fdatabase.DATETIME.
-    print()
-    #.strftime('%Y-%m-%d %H:%M:%S')
-    # date = str(date)
+
     userData = history(
         storeName=storename,
         userPhoneNum=phoneNum,

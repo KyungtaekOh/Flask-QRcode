@@ -136,13 +136,13 @@ def mailSend():
         id = data['id']
         pw = data['pw']
         target = variable.getTarget()
-        print('#################')
+        print('Total : ', len(target))
         for i in target:
             print(i)
         sender = mailSender()
         sender.send_mail(addr=id,
                          subj_layout="코로나 확진자 동선 겹침알림",
-                         cont_layout="검사안받으면 3대가 망함")
+                         cont_layout="코로나 검사 바람")
     except Exception as e:
         print(e)
     return jsonify(result=re)
