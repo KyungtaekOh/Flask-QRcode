@@ -5,6 +5,8 @@ Flask app for creating and recognizing QR codes
 ```
 pip install flask
 pip install sqlalchemy
+pip install opencv-python
+pip install pyzbar
 ```
 
 
