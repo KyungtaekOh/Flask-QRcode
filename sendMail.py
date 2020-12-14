@@ -10,7 +10,7 @@ class mailSender(object):
         self.SMTP_PORT = 465
 
         # 보내는 메일 계정
-        self.SMTP_USER = "rudxor5026@gmail.com"
+        self.SMTP_USER = "address@example.com"
         self.SMTP_PASSWORD = "pass"
 
 
