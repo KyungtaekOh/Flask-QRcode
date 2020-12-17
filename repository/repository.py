@@ -20,11 +20,14 @@ def insertUserData(storename=None, phoneNum=None, mailAddress=None, daydate=None
     except Exception as e:
         print(e)
 
-def pageable(per_page, selected_page):
-    pagination = history.query.paginate(selected_page, per_page, True)
-    return pagination
-
-
-def find_by_id(id):
-    img = history.query.filter_by(id=id).first()
-    return img
+"""
+Function Not Use
+"""
+# def pageable(per_page, selected_page):
+#     pagination = history.query.paginate(selected_page, per_page, True)
+#     return pagination
+#
+#
+# def find_by_id(id):
+#     img = history.query.filter_by(id=id).first()
+#     return img
