@@ -25,34 +25,34 @@ def hello_world():
 
 class Variable(object):
     def __init__(self):
-        self.prev_data = None
-        self.barcode_data = None
-        self.storename = None
-        self.target = None
+        self.__prev_data = None
+        self.__barcode_data = None
+        self.__storename = None
+        self.__target = None
 
     def setTarget(self, t):
-        self.target = t
+        self.__target = t
 
     def getTarget(self):
-        return self.target
+        return self.__target
 
     def setname(self, name):
-        self.storename = name
+        self.__storename = name
 
     def getname(self):
-        return self.storename
+        return self.__storename
 
     def setPrev(self, prev):
-        self.prev_data = prev
+        self.__prev_data = prev
 
     def setBarcode(self, barc):
-        self.barcode_data = barc
+        self.__barcode_data = barc
 
     def getPrev(self, **kwargs):
-        return self.prev_data
+        return self.__prev_data
 
     def getBarcode(self, **kwargs):
-        return self.barcode_data
+        return self.__barcode_data
 
 
 variable = Variable()
@@ -121,9 +121,6 @@ def query():
         variable.setTarget(result2)
     except Exception as e:
         print(e)
-    """
-    test time :     2020-12-03 00:00:00
-    """
 
     return jsonify(result="success")
 
@@ -158,9 +155,10 @@ def index(storename=None):
 def cam():
     return Response(read_cam(), mimetype='multipart/x-mixed-replace; boundary=mycam')
 
-
-### CAMERA ###
-camera = cv2.VideoCapture(0)  # video device number (/dev/videoX)
+"""
+Camera
+"""
+camera = cv2.VideoCapture(0)
 if not camera.isOpened():
     raise RuntimeError('Please Check device\'s Camera.')
 
@@ -197,7 +195,7 @@ def read_cam():
                 dbThread.start()
             except Exception as e:
                 print(e)
-        # yield Data
+
         yield (b'--mycam\r\n'
                b'Content-Type: image/jpeg\r\n\r\n'
                + cv2.imencode('.jpg', cv2.cvtColor(img, cv2.IMREAD_COLOR))[1].tobytes()
