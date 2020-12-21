@@ -63,8 +63,3 @@ class mailSender(object):
         smtp.sendmail(self.SMTP_USER, addr, msg.as_string())
         # 닫기
         smtp.close()
-
-
-# if __name__ == '__main__':
-#     send = mailSender()
-#     send.send_mail()
