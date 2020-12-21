@@ -42,10 +42,8 @@
     font-style: normal;
     font-size: 200%;
     letter-spacing: 0.3em;
-    /*color: rgb(223, 190, 106);*/
     color: white;
     border-radius: 0;
-    /*padding: 18px 80px 20px;*/
     transition: all 0.7s ease-out;
     background: linear-gradient(270deg, rgba(223, 190, 106, 0.8), rgba(146, 111, 52, 0.8), rgba(34, 34, 34, 0), rgba(34, 34, 34, 0));
     background-position: 1% 50%;
