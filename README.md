@@ -1,5 +1,5 @@
 # Flask-QRcode
-## Flask app for creating and recognizing QR codes
+### Flask app for creating and recognizing QR codes
 
 ### Install Package
 ```
